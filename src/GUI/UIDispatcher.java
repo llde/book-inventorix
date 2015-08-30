@@ -1,5 +1,7 @@
 package GUI;
 
+import GUI.CreateItem.CreateItem;
+import GUI.CreateProperty.CreateProperty;
 import GUI.MainWindow.MainWindow;
 
 /**
@@ -9,12 +11,15 @@ public class UIDispatcher {
     private static UIDispatcher dispatcher = null;
 
     private MainWindow mainwin = null;
-
+    private CreateProperty propertynew = null;
+    private CreateItem itemnew = null;
 
 
 
     private UIDispatcher(){
         mainwin = new MainWindow();
+        propertynew = new CreateProperty();
+        itemnew = new CreateItem();
     }
 
     public MainWindow getMainwin(){
@@ -28,4 +33,11 @@ public class UIDispatcher {
         return dispatcher;
     }
 
+    public CreateItem getItemnew() {
+        return itemnew;
+    }
+
+    public CreateProperty getPropertynew() {
+        return propertynew;
+    }
 }
