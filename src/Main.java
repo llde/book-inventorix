@@ -8,8 +8,9 @@ import javafx.stage.Stage;
  */
 public class Main  extends Application{
     public static void main(String[] args){
-        //PreFX configurationfile init
+        //PreFX configurationfile init.
         launch(args);
+        //PostFX  hook crash javaFX thread
     }
 
     @Override

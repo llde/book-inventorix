@@ -22,6 +22,12 @@ public class UIDispatcher {
         itemnew = new CreateItem();
     }
 
+    private void HooksCallBack(){
+        mainwin.HookCallbacks();
+        propertynew.HookCallbacks();
+        itemnew.HooksCallbacks();
+    }
+
     public MainWindow getMainwin(){
         return mainwin;
     }
@@ -29,6 +35,7 @@ public class UIDispatcher {
     public static UIDispatcher getDispatcher(){
         if(dispatcher ==  null) {
             dispatcher = new UIDispatcher();
+            dispatcher.HooksCallBack();
         }
         return dispatcher;
     }

@@ -22,6 +22,11 @@ public class CreateItem implements GUI{
         }
     }
 
+    public void HooksCallbacks(){
+
+    }
+
+
     @Override
     public Scene getScene(){
         return sc;
