@@ -20,6 +20,16 @@ import javafx.stage.Stage;
 
 
 public class CreateProperty implements GUI {
+    @FXML
+    private Button ButtonOk;
+    @FXML
+    private Button ButtonCancel;
+    @FXML
+    private TextField TextName;
+    @FXML
+    private TextField TextType;
+    @FXML
+    private TextField TestValueDef;
 
     private Scene sc = null;
 
