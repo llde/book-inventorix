@@ -59,12 +59,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="270.0">
                      <children>
-                        <TableView fx:id="invView" prefHeight="321.0" prefWidth="682.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
+                        <TableView fx:id="invView" layoutX="11.0" prefHeight="323.0" prefWidth="671.0" />
                      </children>
                   </AnchorPane>
               </content>
