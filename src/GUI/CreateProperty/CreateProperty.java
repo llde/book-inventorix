@@ -29,7 +29,7 @@ public class CreateProperty implements GUI {
     @FXML
     private TextField TextType;
     @FXML
-    private TextField TestValueDef;
+    private TextField TextValueDef;
 
     private Scene sc = null;
 
@@ -46,6 +46,17 @@ public class CreateProperty implements GUI {
 
     public void HookCallbacks(){
         UIDispatcher  disp = UIDispatcher.getDispatcher();
+        ButtonOk.setOnAction((event) ->{
+            try {
+                //Migliorare forse questo starebbe meglio all'interno di Property?
+                Property prop =  new Property(TextName.getText(), Class.forName("java.lang." + TextType.getText()), TextValueDef.getText());
+                disp.getMainwin().GetPropertyList().add(prop);
+                ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene());
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+        ButtonCancel.setOnAction(event -> ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene()));
     }
 
     @Override
