@@ -4,6 +4,7 @@ import Back.Item;
 import Back.Property;
 import GUI.Interface.GUI;
 import GUI.UIDispatcher;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Created by Lorenzo on 30/08/2015.
@@ -48,11 +52,11 @@ public class MainWindow implements GUI{
                 public void onChanged(Change<? extends Property> c) {
                     Property added = c.getElementAdded();
                     TableColumn<Item, String> nuovacolonna =  new TableColumn<>(added.getNome());
-            //        nuovacolonna.setCellValueFactory((cellData)-> cellData.getValue().toString() );
+                    nuovacolonna.setCellValueFactory((cellData) -> new SimpleStringProperty(added.getValore()));
                     invView.getColumns().add(nuovacolonna);
                 }
             });
-            Property name = new Property("Nome", String.class, "");
+            Property name = new Property("Tipo", String.class, "");
             listprop.add(name);
             sc = new Scene(ancora);
         }
@@ -62,6 +66,9 @@ public class MainWindow implements GUI{
     }
 
     public void HookCallbacks(){
+        TableColumn<Item,String> col = new TableColumn<>("Name");
+        col.setCellValueFactory((data)-> new SimpleStringProperty(data.getValue().getNome()));
+        invView.getColumns().add(col);
         UIDispatcher disp = UIDispatcher.getDispatcher();
         AddPropertyButton.setOnAction((e) -> ((Stage) this.sc.getWindow()).setScene(disp.getPropertynew().getScene()));
         invView.setOnContextMenuRequested((event) ->{
@@ -88,5 +95,10 @@ public class MainWindow implements GUI{
 
     public ObservableSet<Property> GetPropertyList(){
         return listprop;
+    }
+
+
+    public ObservableList<Item> getItems() {
+        return invView.getItems();
     }
 }
