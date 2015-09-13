@@ -4,6 +4,11 @@ import Back.Item;
 import Back.Property;
 import GUI.Interface.GUI;
 import GUI.UIDispatcher;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +17,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.util.Observable;
 
 /**
  * Created by Lorenzo on 31/08/2015.
@@ -44,15 +51,20 @@ public class CreateItem implements GUI{
         UIDispatcher disp = UIDispatcher.getDispatcher();
         //TODO need to poulate the TableProperty
         ButtonAbort.setOnAction((ev) -> ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene()));
-        ButtonOk.setOnAction((ev) ->{
+        ButtonOk.setOnAction((ev) -> {
             String name = NameText.getText();
-            Property[]  properties =  TableProperty.getItems().toArray(new Property[TableProperty.getItems().size()]);
-            Item it = new  Item(name, properties);
+            Property[] properties = TableProperty.getItems().toArray(new Property[TableProperty.getItems().size()]);
+            Item it = new Item(name, properties);
             disp.getMainwin().getItems().add(it);
-            ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene());
+            ((Stage) sc.getWindow()).setScene(disp.getMainwin().getScene());
         });
+
+        TableProperty.getColumns().get(0).setCellValueFactory((data) -> (ObservableValue) new SimpleStringProperty(data.getValue().getNome()));
+        TableProperty.getColumns().get(1).setCellValueFactory((data) -> (ObservableValue) new SimpleStringProperty(data.getValue().getValore()));
     }
 
+
+    public ObservableList<Property> getListProperty(){return TableProperty.getItems();}
 
     @Override
     public Scene getScene(){

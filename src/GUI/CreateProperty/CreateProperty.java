@@ -51,6 +51,7 @@ public class CreateProperty implements GUI {
                 //Migliorare forse questo starebbe meglio all'interno di Property?
                 Property prop =  new Property(TextName.getText(), Class.forName("java.lang." + TextType.getText()), TextValueDef.getText());
                 disp.getMainwin().GetPropertyList().add(prop);
+                disp.getItemnew().getListProperty().add(prop);
                 ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene());
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
