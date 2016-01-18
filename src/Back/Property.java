@@ -12,7 +12,7 @@ interface Property<T> {
 
     String getPropertyName();
 
-    Integer getPropertyIndex();
+    String getPropertyID();
 
     boolean isOrdinalble();
 

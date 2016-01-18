@@ -1,4 +1,5 @@
-import GUI.MainWindow.MainWindow;
+import Back.Item;
+import Back.ItemImpl;
 import GUI.UIDispatcher;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -19,4 +20,8 @@ public class Main  extends Application{
         primaryStage.setScene(dis.getMainwin().getScene());
         primaryStage.show();
     }
+
+
+    Item t = new ItemImpl();
+
 }

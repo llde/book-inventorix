@@ -3,53 +3,44 @@ package Back;
 /**
  * Created by Lorenzo on 30/08/2015.
  */
-public class PropertyImpl {
+public class PropertyImpl<T> implements Property<T>{
+
     private String nome = null;
-    private String tipo = null;
-    private String valore  = null;
-    private Class classe = null;
+    private String ID = null;
+    private T valore  = null;
 
 
-    public PropertyImpl(String nome, Class classe, String valore ){
+    public PropertyImpl(String nome, T valore ){
         this.nome = nome;
-        this.classe = classe;
         this.valore = valore;
     }
 
     public PropertyImpl(){
-        this(null,null,null);
+        this(null,null);
     }
 
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Class getClasse() {
-        return classe;
-    }
-
-    public void setClasse(Class classe) {
-        this.classe = classe;
-    }
-
-    public String getValore() {
+    @Override
+    public T getValue() {
         return valore;
     }
 
-    public void setValore(String valore) {
-        this.valore = valore;
+    @Override
+    public void setValue() {
+
     }
 
-    public String getTipo() {
-        return tipo;
+    @Override
+    public String getPropertyName() {
+        return null;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    @Override
+    public String getPropertyID() {
+        return null;
+    }
+
+    @Override
+    public boolean isOrdinalble() {
+        return false;
     }
 }
