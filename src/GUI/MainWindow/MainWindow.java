@@ -1,7 +1,7 @@
 package GUI.MainWindow;
 
-import Back.Item;
-import Back.Property;
+import Back.ItemImpl;
+import Back.PropertyImpl;
 import GUI.Interface.GUI;
 import GUI.UIDispatcher;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,12 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * Created by Lorenzo on 30/08/2015.
@@ -32,13 +26,13 @@ public class MainWindow implements GUI{
     @FXML
     private Button ButtonLoad;
     @FXML
-    private ChoiceBox<Property> PropBox;
+    private ChoiceBox<PropertyImpl> PropBox;
     @FXML
     private TextField filter;
     @FXML
-    private TableView<Item> invView;
+    private TableView<ItemImpl> invView;
 
-    private ObservableSet<Property> listprop;
+    private ObservableSet<PropertyImpl> listprop;
     private Scene sc = null;
 
     public MainWindow(){
@@ -47,16 +41,16 @@ public class MainWindow implements GUI{
             loader.setController(this);
             VBox ancora = loader.load();
             listprop = FXCollections.observableSet();
-            listprop.addListener(new SetChangeListener<Property>() {   //Mandare tutto nel HookCallBack
+            listprop.addListener(new SetChangeListener<PropertyImpl>() {   //Mandare tutto nel HookCallBack
                 @Override
-                public void onChanged(Change<? extends Property> c) {
-                    Property added = c.getElementAdded();
-                    TableColumn<Item, String> nuovacolonna =  new TableColumn<>(added.getNome());
+                public void onChanged(Change<? extends PropertyImpl> c) {
+                    PropertyImpl added = c.getElementAdded();
+                    TableColumn<ItemImpl, String> nuovacolonna =  new TableColumn<>(added.getNome());
                     nuovacolonna.setCellValueFactory((cellData) -> new SimpleStringProperty(added.getValore()));
                     invView.getColumns().add(nuovacolonna);
                 }
             });
-            Property name = new Property("Tipo", String.class, "");
+            PropertyImpl name = new PropertyImpl("Tipo", String.class, "");
             listprop.add(name);
             sc = new Scene(ancora);
         }
@@ -66,7 +60,7 @@ public class MainWindow implements GUI{
     }
 
     public void HookCallbacks(){
-        TableColumn<Item,String> col = new TableColumn<>("Name");
+        TableColumn<ItemImpl,String> col = new TableColumn<>("Name");
         col.setCellValueFactory((data)-> new SimpleStringProperty(data.getValue().getNome()));
         invView.getColumns().add(col);
         UIDispatcher disp = UIDispatcher.getDispatcher();
@@ -93,12 +87,12 @@ public class MainWindow implements GUI{
     }
 
 
-    public ObservableSet<Property> GetPropertyList(){
+    public ObservableSet<PropertyImpl> GetPropertyList(){
         return listprop;
     }
 
 
-    public ObservableList<Item> getItems() {
+    public ObservableList<ItemImpl> getItems() {
         return invView.getItems();
     }
 }

@@ -1,13 +1,11 @@
 package GUI.CreateItem;
 
-import Back.Item;
-import Back.Property;
+import Back.ItemImpl;
+import Back.PropertyImpl;
 import GUI.Interface.GUI;
 import GUI.UIDispatcher;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.util.Observable;
-
 /**
  * Created by Lorenzo on 31/08/2015.
  */
@@ -29,7 +25,7 @@ public class CreateItem implements GUI{
     @FXML
     private Button ButtonAbort;
     @FXML
-    private TableView<Property> TableProperty;
+    private TableView<PropertyImpl> TableProperty;
     @FXML
     private TextField NameText;
 
@@ -53,8 +49,8 @@ public class CreateItem implements GUI{
         ButtonAbort.setOnAction((ev) -> ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene()));
         ButtonOk.setOnAction((ev) -> {
             String name = NameText.getText();
-            Property[] properties = TableProperty.getItems().toArray(new Property[TableProperty.getItems().size()]);
-            Item it = new Item(name, properties);
+            PropertyImpl[] properties = TableProperty.getItems().toArray(new PropertyImpl[TableProperty.getItems().size()]);
+            ItemImpl it = new ItemImpl(name, properties);
             disp.getMainwin().getItems().add(it);
             ((Stage) sc.getWindow()).setScene(disp.getMainwin().getScene());
         });
@@ -64,7 +60,7 @@ public class CreateItem implements GUI{
     }
 
 
-    public ObservableList<Property> getListProperty(){return TableProperty.getItems();}
+    public ObservableList<PropertyImpl> getListProperty(){return TableProperty.getItems();}
 
     @Override
     public Scene getScene(){

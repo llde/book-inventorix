@@ -1,43 +1,28 @@
 package Back;
 
+import com.sun.javafx.UnmodifiableArrayList;
+
 /**
- * Created by Lorenzo on 30/08/2015.
+ * Created by Lorenzo on 18/01/2016.
  */
-public class Item {
-    /*    //This is for Book Inventory, I want something more general
-    private Property autore = null;
-    private Property locazione = null;
-    private Property fisicaodigitale = null;
-    */
-
-    private String nome = null;
-    private Property[] properties = null;
+public interface Item {
 
 
-    public Item(String name , Property... properties){
-        this.nome = name;
-        this.properties = properties;
-    }
+    <T> T getField(String property);
 
-    public Item(){
-        this(null);
-    }
+    <T> T getField(Property property);
 
 
-    public String getNome() {
-        return nome;
-    }
+    <T> boolean setField(String property , T  value);
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    <T> boolean setField(Property property, T value);
 
-    public Property[] getProperties() {
-        return properties;
-    }
+    UnmodifiableArrayList<Property> getProperties();
 
-    public void setProperties(Property[] properties) {
-        this.properties = properties;
-    }
+    void addProperty(Property property);
 
+    void removeProperty(Property property);
+
+    @Override
+    boolean equals(Object object);
 }

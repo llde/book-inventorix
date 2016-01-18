@@ -1,15 +1,12 @@
 package GUI.CreateProperty;
 
-import Back.Item;
-import Back.Property;
+import Back.PropertyImpl;
 import GUI.Interface.GUI;
 import GUI.UIDispatcher;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -49,7 +46,7 @@ public class CreateProperty implements GUI {
         ButtonOk.setOnAction((event) ->{
             try {
                 //Migliorare forse questo starebbe meglio all'interno di Property?
-                Property prop =  new Property(TextName.getText(), Class.forName("java.lang." + TextType.getText()), TextValueDef.getText());
+                PropertyImpl prop =  new PropertyImpl(TextName.getText(), Class.forName("java.lang." + TextType.getText()), TextValueDef.getText());
                 disp.getMainwin().GetPropertyList().add(prop);
                 disp.getItemnew().getListProperty().add(prop);
                 ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene());
