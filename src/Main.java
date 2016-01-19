@@ -22,6 +22,4 @@ public class Main  extends Application{
     }
 
 
-    Item t = new ItemImpl();
-
 }

@@ -1,8 +1,9 @@
-package GUI.MainWindow;
+package GUI.Implements;
 
-import Back.ItemImpl;
+import Back.Item;
+import Back.Property;
 import Back.PropertyImpl;
-import GUI.Interface.GUI;
+import GUI.GUI;
 import GUI.UIDispatcher;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.*;
@@ -26,31 +27,31 @@ public class MainWindow implements GUI{
     @FXML
     private Button ButtonLoad;
     @FXML
-    private ChoiceBox<PropertyImpl> PropBox;
+    private ChoiceBox<Property<?>> PropBox;
     @FXML
     private TextField filter;
     @FXML
-    private TableView<ItemImpl> invView;
+    private TableView<Item> invView;
 
-    private ObservableSet<PropertyImpl> listprop;
+    private ObservableSet<Property> listprop;
     private Scene sc = null;
 
     public MainWindow(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("./MainWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
             loader.setController(this);
             VBox ancora = loader.load();
             listprop = FXCollections.observableSet();
-            listprop.addListener(new SetChangeListener<PropertyImpl>() {   //Mandare tutto nel HookCallBack
+            listprop.addListener(new SetChangeListener<Property>() {   //Mandare tutto nel HookCallBack
                 @Override
-                public void onChanged(Change<? extends PropertyImpl> c) {
-                    PropertyImpl added = c.getElementAdded();
-                    TableColumn<ItemImpl, String> nuovacolonna =  new TableColumn<>(added.getNome());
-                    nuovacolonna.setCellValueFactory((cellData) -> new SimpleStringProperty(added.getValore()));
+                public void onChanged(Change<? extends Property> c) {
+                    Property<String> added = c.getElementAdded();
+                    TableColumn<Item, String> nuovacolonna =  new TableColumn<>(added.getPropertyID());
+                    nuovacolonna.setCellValueFactory((cellData) -> new SimpleStringProperty(added.getValue()));
                     invView.getColumns().add(nuovacolonna);
                 }
             });
-            PropertyImpl name = new PropertyImpl("Tipo", String.class, "");
+            PropertyImpl name = new PropertyImpl();
             listprop.add(name);
             sc = new Scene(ancora);
         }
@@ -60,8 +61,8 @@ public class MainWindow implements GUI{
     }
 
     public void HookCallbacks(){
-        TableColumn<ItemImpl,String> col = new TableColumn<>("Name");
-        col.setCellValueFactory((data)-> new SimpleStringProperty(data.getValue().getNome()));
+        TableColumn<Item,String> col = new TableColumn<>("Name");
+        col.setCellValueFactory((data)-> new SimpleStringProperty(data.getValue().getField("nome")));
         invView.getColumns().add(col);
         UIDispatcher disp = UIDispatcher.getDispatcher();
         AddPropertyButton.setOnAction((e) -> ((Stage) this.sc.getWindow()).setScene(disp.getPropertynew().getScene()));
@@ -87,12 +88,12 @@ public class MainWindow implements GUI{
     }
 
 
-    public ObservableSet<PropertyImpl> GetPropertyList(){
+    public ObservableSet<Property> GetPropertyList(){
         return listprop;
     }
 
 
-    public ObservableList<ItemImpl> getItems() {
+    public ObservableList<Item> getItems() {
         return invView.getItems();
     }
 }

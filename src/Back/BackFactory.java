@@ -29,7 +29,7 @@ public class BackFactory {
         return new ItemImpl();
     }
 
-    public <T> Property<T> getProeprty(){
+    public <T> Property<T> getProperty(){
         if(propertyf != null) return propertyf.newInstance();
         return new PropertyImpl<>();
     }

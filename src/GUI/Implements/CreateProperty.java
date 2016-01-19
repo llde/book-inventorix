@@ -1,7 +1,6 @@
-package GUI.CreateProperty;
+package GUI.Implements;
 
-import Back.PropertyImpl;
-import GUI.Interface.GUI;
+import GUI.GUI;
 import GUI.UIDispatcher;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +31,7 @@ public class CreateProperty implements GUI {
 
     public CreateProperty() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("./CreateProperty.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateProperty.fxml"));
             loader.setController(this);
             AnchorPane ancora = loader.load();
             sc = new Scene(ancora);
@@ -46,11 +45,11 @@ public class CreateProperty implements GUI {
         ButtonOk.setOnAction((event) ->{
             try {
                 //Migliorare forse questo starebbe meglio all'interno di Property?
-                PropertyImpl prop =  new PropertyImpl(TextName.getText(), Class.forName("java.lang." + TextType.getText()), TextValueDef.getText());
-                disp.getMainwin().GetPropertyList().add(prop);
-                disp.getItemnew().getListProperty().add(prop);
+            //    PropertyImpl prop =  new PropertyImpl(TextName.getText(), Class.forName("java.lang." + TextType.getText()), TextValueDef.getText());
+             //   disp.getMainwin().GetPropertyList().add(prop);
+              //  disp.getItemnew().getListProperty().add(prop);
                 ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene());
-            } catch (ClassNotFoundException e) {
+            }  catch (Exception e) {
                 e.printStackTrace();
             }
         });

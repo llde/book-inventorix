@@ -4,7 +4,7 @@ package Back;
 /**
  * Created by Lorenzo on 18/01/2016.
  */
-interface Property<T> {
+public interface Property<T> {
 
     T getValue();
 

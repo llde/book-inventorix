@@ -1,8 +1,8 @@
 package GUI;
 
-import GUI.CreateItem.CreateItem;
-import GUI.CreateProperty.CreateProperty;
-import GUI.MainWindow.MainWindow;
+import GUI.Implements.CreateItem;
+import GUI.Implements.CreateProperty;
+import GUI.Implements.MainWindow;
 
 /**
  * Created by Lorenzo on 30/08/2015.

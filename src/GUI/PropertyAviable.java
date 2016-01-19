@@ -1,4 +1,4 @@
-package GUI.CreateProperty;
+package GUI;
 
 /**
  * Created by Lorenzo on 31/08/2015.

@@ -1,4 +1,4 @@
-package GUI.Interface;
+package GUI;
 
 import javafx.scene.Scene;
 

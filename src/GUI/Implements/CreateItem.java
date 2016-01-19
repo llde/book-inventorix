@@ -1,8 +1,9 @@
-package GUI.CreateItem;
+package GUI.Implements;
 
+import Back.Item;
 import Back.ItemImpl;
-import Back.PropertyImpl;
-import GUI.Interface.GUI;
+import Back.Property;
+import GUI.GUI;
 import GUI.UIDispatcher;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -25,7 +26,7 @@ public class CreateItem implements GUI{
     @FXML
     private Button ButtonAbort;
     @FXML
-    private TableView<PropertyImpl> TableProperty;
+    private TableView<Property<?>> TableProperty;
     @FXML
     private TextField NameText;
 
@@ -33,7 +34,7 @@ public class CreateItem implements GUI{
     private Scene sc = null;
     public CreateItem(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("./CreateItem.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateItem.fxml"));
             loader.setController(this);
             AnchorPane ancora = loader.load();
             sc = new Scene(ancora);
@@ -49,18 +50,18 @@ public class CreateItem implements GUI{
         ButtonAbort.setOnAction((ev) -> ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene()));
         ButtonOk.setOnAction((ev) -> {
             String name = NameText.getText();
-            PropertyImpl[] properties = TableProperty.getItems().toArray(new PropertyImpl[TableProperty.getItems().size()]);
-            ItemImpl it = new ItemImpl(name, properties);
+            Property[] properties = TableProperty.getItems().toArray(new Property[TableProperty.getItems().size()]);
+            Item it = new ItemImpl();
             disp.getMainwin().getItems().add(it);
             ((Stage) sc.getWindow()).setScene(disp.getMainwin().getScene());
         });
 
-        TableProperty.getColumns().get(0).setCellValueFactory((data) -> (ObservableValue) new SimpleStringProperty(data.getValue().getNome()));
-        TableProperty.getColumns().get(1).setCellValueFactory((data) -> (ObservableValue) new SimpleStringProperty(data.getValue().getValore()));
+        TableProperty.getColumns().get(0).setCellValueFactory((data) -> (ObservableValue) new SimpleStringProperty(data.getValue().getPropertyName()));
+        TableProperty.getColumns().get(1).setCellValueFactory((data) -> (ObservableValue) new SimpleStringProperty((String)data.getValue().getValue()));
     }
 
 
-    public ObservableList<PropertyImpl> getListProperty(){return TableProperty.getItems();}
+    public ObservableList<Property<?>> getListProperty(){return TableProperty.getItems();}
 
     @Override
     public Scene getScene(){
