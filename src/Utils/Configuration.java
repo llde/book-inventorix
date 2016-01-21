@@ -9,12 +9,35 @@ import java.util.Map;
  */
 public class Configuration {
 
+    public class Setting<T>{
+        private String ID;
+        private T value;
+
+        public Setting(String ID, T value){
+            this.ID = ID;
+            this.value = value;
+        }
+
+        public String getID() {
+            return ID;
+        }
+
+        public void setValue(T value) {
+            this.value = value;
+        }
+
+        public T getValue() {
+            return value;
+        }
+    }
+
+
     private static Configuration config = null;
 
     private final String setting = "settings.ini";
-    private final String title = "InventoriX";
+    public final String title = "InventoriX";
 
-    private final double version = 0.01;
+    public final double version = 0.01;
 
     private final  Map<String, ?> SettingsMap = new HashMap<>();
 
