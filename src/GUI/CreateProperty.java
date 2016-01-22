@@ -8,7 +8,5 @@ import javafx.collections.ObservableList;
  */
 public interface CreateProperty extends GUI{
 
-    ObservableList<Property<?>> getProperties();
-
 
 }

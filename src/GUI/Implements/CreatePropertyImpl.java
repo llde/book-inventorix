@@ -1,6 +1,6 @@
 package GUI.Implements;
 
-import GUI.GUI;
+import GUI.CreateProperty;
 import GUI.UIDispatcher;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  */
 
 
-public class CreateProperty implements GUI {
+public class CreatePropertyImpl implements CreateProperty {
     @FXML
     private Button ButtonOk;
     @FXML
@@ -29,7 +29,7 @@ public class CreateProperty implements GUI {
 
     private Scene sc = null;
 
-    public CreateProperty() {
+    public CreatePropertyImpl() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateProperty.fxml"));
             loader.setController(this);
@@ -44,10 +44,6 @@ public class CreateProperty implements GUI {
         UIDispatcher  disp = UIDispatcher.getDispatcher();
         ButtonOk.setOnAction((event) ->{
             try {
-                //Migliorare forse questo starebbe meglio all'interno di Property?
-            //    PropertyImpl prop =  new PropertyImpl(TextName.getText(), Class.forName("java.lang." + TextType.getText()), TextValueDef.getText());
-             //   disp.getMainwin().GetPropertyList().add(prop);
-              //  disp.getItemnew().getListProperty().add(prop);
                 ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene());
             }  catch (Exception e) {
                 e.printStackTrace();

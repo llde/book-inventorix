@@ -10,17 +10,5 @@ import javafx.collections.ObservableList;
  */
 public interface MainWindow extends GUI{
 
-    ObservableList<Item>  getItems();
-
-    Item getItem(String nameProperty);
-
-    ObservableList<Property<?>> getProperties();
-
-    void addItem(Item item);
-
-    <T> void addProperty(Property<T> property);
-
-    <T> void setItemProperty(Item item, Property<T> property, T value);
-
 
 }

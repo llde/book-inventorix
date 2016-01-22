@@ -1,38 +1,20 @@
 package GUI;
 
-import GUI.Implements.CreateItem;
-import GUI.Implements.CreateProperty;
-import GUI.Implements.MainWindow;
+import GUI.Implements.CreateItemImpl;
+import GUI.Implements.CreatePropertyImpl;
+import GUI.Implements.MainWindowImpl;
 import lombok.Getter;
 
 /**
  * Created by Lorenzo on 30/08/2015.
  */
 public class UIDispatcher {
+
     @Getter(lazy=true) private static final UIDispatcher dispatcher = new UIDispatcher();
+    @Getter(lazy=true) private final MainWindowImpl mainwin = new MainWindowImpl();
+    @Getter(lazy=true) private final CreatePropertyImpl propertynew = new CreatePropertyImpl();
+    @Getter(lazy=true) private final CreateItemImpl itemnew = new CreateItemImpl();
 
-    private MainWindow mainwin = null;
-    private CreateProperty propertynew = null;
-    private CreateItem itemnew = null;
+    private UIDispatcher(){}
 
-
-
-    private UIDispatcher(){
-        mainwin = new MainWindow();
-        propertynew = new CreateProperty();
-        itemnew = new CreateItem();
-    }
-
-    public MainWindow getMainwin(){
-        return mainwin;
-    }
-
-
-    public CreateItem getItemnew() {
-        return itemnew;
-    }
-
-    public CreateProperty getPropertynew() {
-        return propertynew;
-    }
 }
