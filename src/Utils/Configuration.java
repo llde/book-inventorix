@@ -1,5 +1,7 @@
 package Utils;
 
+import lombok.Getter;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +34,7 @@ public class Configuration {
     }
 
 
-    private static Configuration config = null;
+    @Getter(lazy=true) private static final Configuration config = new Configuration();
 
     private final String setting = "settings.ini";
     public final String title = "InventoriX";
@@ -54,13 +56,5 @@ public class Configuration {
     <T> T getValue(String settingID){return  null;}
 
     <T> void setValue(String settingID , T value){}
-
-
-
-    public static Configuration getConfigurator(){
-        if(config != null) return config;
-        config = new Configuration();
-        return config;
-    }
 
 }

@@ -1,5 +1,3 @@
-import Back.Item;
-import Back.ItemImpl;
 import GUI.UIDispatcher;
 import Utils.Configuration;
 import javafx.application.Application;
@@ -20,13 +18,13 @@ public class Main  extends Application{
 
 
     public static void PreFX(){
-        Configuration.getConfigurator();
+        Configuration.getConfig();
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         UIDispatcher dis = UIDispatcher.getDispatcher();
-        primaryStage.setTitle( Configuration.getConfigurator().title + " " + Configuration.getConfigurator().version);
+        primaryStage.setTitle( Configuration.getConfig().title + " " + Configuration.getConfig().version);
         primaryStage.setScene(dis.getMainwin().getScene());
         primaryStage.show();
     }

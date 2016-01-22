@@ -3,12 +3,13 @@ package GUI;
 import GUI.Implements.CreateItem;
 import GUI.Implements.CreateProperty;
 import GUI.Implements.MainWindow;
+import lombok.Getter;
 
 /**
  * Created by Lorenzo on 30/08/2015.
  */
 public class UIDispatcher {
-    private static UIDispatcher dispatcher = null;
+    @Getter(lazy=true) private static final UIDispatcher dispatcher = new UIDispatcher();
 
     private MainWindow mainwin = null;
     private CreateProperty propertynew = null;
@@ -32,13 +33,6 @@ public class UIDispatcher {
         return mainwin;
     }
 
-    public static UIDispatcher getDispatcher(){
-        if(dispatcher ==  null) {
-            dispatcher = new UIDispatcher();
-            dispatcher.HooksCallBack();
-        }
-        return dispatcher;
-    }
 
     public CreateItem getItemnew() {
         return itemnew;
