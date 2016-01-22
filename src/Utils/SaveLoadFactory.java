@@ -18,7 +18,7 @@ public class SaveLoadFactory {
 
 
     public Map.Entry<Save,Load> GetSaveLoad(){
-        return    null; // new AbstractMap.SimpleImmutableEntry<Save, Load>()
+        return null; // new AbstractMap.SimpleImmutableEntry<Save, Load>()
     }
 
 

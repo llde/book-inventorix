@@ -3,12 +3,12 @@ package GUI.Implements;
 import Back.Item;
 import Back.Property;;
 import Progetto.Progetto;
-import javafx.collections.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import lombok.NonNull;
 
 /**
  * Created by Lorenzo on 30/08/2015.
@@ -43,6 +43,9 @@ public class MainWindowImpl implements GUI.MainWindow {
             e.printStackTrace();
         }
     }
+
+
+
 
 
     @Override

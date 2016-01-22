@@ -40,17 +40,6 @@ public class CreatePropertyImpl implements CreateProperty {
         }
     }
 
-    public void HookCallbacks(){
-        UIDispatcher  disp = UIDispatcher.getDispatcher();
-        ButtonOk.setOnAction((event) ->{
-            try {
-                ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene());
-            }  catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        ButtonCancel.setOnAction(event -> ((Stage)sc.getWindow()).setScene(disp.getMainwin().getScene()));
-    }
 
     @Override
     public Scene getScene() {
