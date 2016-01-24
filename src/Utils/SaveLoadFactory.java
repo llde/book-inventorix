@@ -10,16 +10,21 @@ import java.util.Map;
 public class SaveLoadFactory {
 
     @FunctionalInterface
-    interface SaveLoadInstanceFactory{
-        Map.Entry<Save,Load>  newInstance();
+    interface SaveInstanceFactory{
+        Save  newInstance();
     }
 
-    private SaveLoadInstanceFactory fact = null;
-
-
-    public Map.Entry<Save,Load> GetSaveLoad(){
-        return null; // new AbstractMap.SimpleImmutableEntry<Save, Load>()
+    @FunctionalInterface
+    interface LoadInstanceFactory{
+        Load newInstance();
     }
 
+    private SaveInstanceFactory save = null;
+    private LoadInstanceFactory load = null;
 
+
+    public Load GetLoad(){
+        return null;    }
+
+    public Save  getSave(){ return null;}
 }

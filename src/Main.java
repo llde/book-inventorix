@@ -24,6 +24,7 @@ public class Main  extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle(Configuration.getConfig().title + " " + Configuration.getConfig().version);
+        UIDispatcher.setPrStage(primaryStage);
         primaryStage.setScene(UIDispatcher.getMainwin().getScene());
         primaryStage.show();
     }

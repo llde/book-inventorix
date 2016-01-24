@@ -1,5 +1,7 @@
 package GUI.Implements;
 
+import Back.Item;
+import Back.Property;
 import GUI.CreateProperty;
 import GUI.UIDispatcher;
 import javafx.fxml.FXML;
@@ -45,5 +47,8 @@ public class CreatePropertyImpl implements CreateProperty {
     public Scene getScene() {
         return sc;
     }
+
+
+
 
 }

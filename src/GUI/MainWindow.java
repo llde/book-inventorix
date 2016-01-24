@@ -10,5 +10,10 @@ import javafx.collections.ObservableList;
  */
 public interface MainWindow extends GUI{
 
+    void addProperty(Property<?> property);
+
+    void addItem(Item item);
+
+    boolean IsProjectLoaded();
 
 }

@@ -3,4 +3,5 @@ Not usable. Still WIP
 
 
 I'm using LOMBOK to have a better syntax and some functionality.
-LOMBOK is required! Maven is your friend
+LOMBOK is required! A version is already included in the package, but the environment must be setted if maven is not used.
+Added a dependancy on Kryo but still not used.
