@@ -1,15 +1,16 @@
 package GUI.Implements;
 
 import Back.Item;
-import Back.Property;;
+import Back.Property;
 import GUI.UIDispatcher;
 import Progetto.Progetto;
+import Progetto.ProgettoFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import lombok.NonNull;
+import javafx.stage.Stage;
 
 /**
  * Created by Lorenzo on 30/08/2015.
@@ -39,6 +40,7 @@ public class MainWindowImpl implements GUI.MainWindow {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
             loader.setController(this);
             VBox ancora = loader.load();
+            proj = ProgettoFactory.getProject("Prova");
             AddPropertyButton.setOnAction((event) ->{
                 UIDispatcher.getPrStage().setScene(UIDispatcher.getPropertynew().getScene());
             });
@@ -65,6 +67,11 @@ public class MainWindowImpl implements GUI.MainWindow {
 
     @Override
     public void addItem(Item item) {
+
+    }
+
+    @Override
+    public <T> void ModProperty(Property<T> property, T value) {
 
     }
 

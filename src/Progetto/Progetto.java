@@ -2,6 +2,7 @@ package Progetto;
 
 import Back.Item;
 import Back.Property;
+import javafx.collections.ObservableList;
 
 import java.util.List;
 import java.util.UUID;
@@ -11,9 +12,9 @@ import java.util.UUID;
  */
 public interface Progetto {
 
-    List<Item> getItems();
+    ObservableList<Item> getItems();
 
-    List<Property<?>> getProperty();
+    ObservableList<Property<?>> getProperty();
 
     void addItem(Item it);
 
@@ -24,6 +25,10 @@ public interface Progetto {
     <T> T save();
 
     void dispose();
+
+    String getName();
+
+    Boolean getSaved();
 
 
 

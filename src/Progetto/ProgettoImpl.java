@@ -2,9 +2,9 @@ package Progetto;
 
 import Back.Item;
 import Back.Property;
+import java.io.File;
 import javafx.collections.FXCollections;
-
-import java.util.List;
+import javafx.collections.ObservableList;
 import java.util.UUID;
 
 /**
@@ -12,26 +12,29 @@ import java.util.UUID;
  */
 class ProgettoImpl implements Progetto {
 
-    private List<Property<?>> propertyList = FXCollections.observableArrayList();
-    private List<Item>  itemList = FXCollections.observableArrayList();
+    private String nome = "" ;
+    private Boolean saved = false;
+    private ObservableList<Property<?>> propertyList = null;
+    private ObservableList<Item>  itemList = null;
 
 
 
+    ProgettoImpl(String name){
+        nome = name;
+        propertyList = FXCollections.observableArrayList();
+        itemList = FXCollections.observableArrayList();
+    }
 
-
-
-
-
-
+    ProgettoImpl(File f){}
 
 
     @Override
-    public List<Item> getItems() {
+    public ObservableList<Item> getItems() {
         return itemList;
     }
 
     @Override
-    public List<Property<?>> getProperty() {
+    public ObservableList<Property<?>> getProperty() {
         return propertyList;
     }
 
@@ -58,5 +61,15 @@ class ProgettoImpl implements Progetto {
     @Override
     public void dispose() {
 
+    }
+
+    @Override
+    public String getName() {
+        return nome;
+    }
+
+    @Override
+    public Boolean getSaved() {
+        return saved;
     }
 }
