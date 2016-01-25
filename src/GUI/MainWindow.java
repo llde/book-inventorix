@@ -14,6 +14,8 @@ public interface MainWindow extends GUI{
 
     void addItem(Item item);
 
+    <T> void ModProperty(Property<T> property, T Svalue);
+
     boolean IsProjectLoaded();
 
 }
