@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 public class MainWindowImpl implements GUI.MainWindow {
     @FXML
     private Button AddPropertyButton;
+    //TODO aggiungere ADDItem Button
+
     @FXML
     private Button ButtonNew;
     @FXML
@@ -44,6 +46,7 @@ public class MainWindowImpl implements GUI.MainWindow {
             AddPropertyButton.setOnAction((event) ->{
                 UIDispatcher.getPrStage().setScene(UIDispatcher.getPropertynew().getScene());
             });
+            invView.setItems(proj.getItems());
             sc = new Scene(ancora);
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,18 +64,17 @@ public class MainWindowImpl implements GUI.MainWindow {
 
 
     @Override
-    public void addProperty(Property<?> property) {
-
+    public  void addProperty(Property<?> property) {
+        proj.addProperty(property);
     }
 
     @Override
     public void addItem(Item item) {
-
+        proj.addItem(item);
     }
 
     @Override
     public <T> void ModProperty(Property<T> property, T value) {
-
     }
 
     @Override
